@@ -1,0 +1,2 @@
+# inkoppamsi
+aplikasi ini adalah aplikasi yang mencakup akunting, pensiun hari tua, koperasi simpan pinjam serta trading yang dibuat dengan framework laravel versi 2. tidak semua sourcecode yang fix saya simpan disini dikarenakan  penyimpanan github yang bersifat public dan aplikasi ini adalah aplikasi yang diperuntukan untuk perusahaan yang memesan kepada saya. sehingga saya tidak publish versi lengkapnya dan source cod eyang saya upload disini hanya sebagai pembelajaran saja bagi yang berminat belajar laravel.
