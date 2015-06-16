@@ -1,0 +1,25 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>#Showing <?php echo $setup->id_rekening; ?></h2>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-striped">
+				<tbody>
+					<tr><td>ID Rekening</td><td><strong><?php echo $setup->id_rekening; ?></strong></td></tr>
+					<tr><td>Nama Rekening</td><td><strong><?php echo $setup->nama_rekening; ?></strong></td></tr>
+					<tr><td>ID Klasifikasi</td><td><strong><?php echo $setup->id_klasifikasi; ?></strong></td></tr>
+					<tr><td>Parent ID</td><td><strong><?php echo $setup->parent_id; ?></strong></td></tr>
+					<tr><td>Normal Balance</td><td><strong><?php echo $setup->normal_balance; ?></strong></td></tr>
+					<tr><td>Golongan</td><td><strong><?php echo $setup->id_golongan; ?></strong></td></tr>
+					<tr><td>Debet</td><td><strong><?php echo number_format($setup->saldo_awal_debet,2,'.',','); ?></strong></td></tr>
+					<tr><td>Kredit</td><td><strong><?php echo number_format($setup->saldo_awal_kredit,2,'.',','); ?></strong></td></tr>
+				</tbody>
+			</table>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('setup'); ?>">Go Back</a>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,54 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<section class="content invoice">
+<!-- title row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="page-header">
+            <i class="fa fa-globe"></i> WEB INKOPPAMSI
+            <small class="pull-right">Date: <?php echo date('d M Y'); ?></small>
+            </h2>
+        </div><!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+        <div class="col-sm-8 invoice-col">
+            <H2>LAPORAN BARANG </h2><br>
+		</div>		
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID </th>
+							<th>Nama Barang </th>
+							<th>Stok</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+					<?php foreach($data as $key => $value): ?>
+						<tr>							
+							<td><?php echo $value->id; ?></td>
+							<td><?php echo $value->nama_barang; ?></td>
+							<td><?php echo $value->stok; ?></td>
+						</tr>
+					<?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+		
+        <div class="row no-print">
+            <div class="col-xs-12">
+                <button class="btn btn-success" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                <a class="btn btn-primary" style="margin-right: 5px;" href="<?php echo URL::to('lapbarang'); ?>"><i class="fa fa-undo"></i> Back</a>
+            </div>
+        </div>
+	</div>
+</section><!-- /.content -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.trading', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

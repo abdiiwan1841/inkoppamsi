@@ -1,0 +1,26 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+
+<h2>Edit <?php echo $area->id; ?></h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::model($area, array('route' => array('area.update', $area->id), 'method' => 'PUT')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id','Area ID'); ?>
+	<?php echo Form::text('id',null,array('class'=>'form-control')); ?>
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('area_name','Area Name'); ?>
+	<?php echo Form::text('area_name',null,array('class'=>'form-control')); ?>
+</div>
+
+<?php echo Form::submit('Edit the Area',array('class'=>'btn btn-primary')); ?>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('areas.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

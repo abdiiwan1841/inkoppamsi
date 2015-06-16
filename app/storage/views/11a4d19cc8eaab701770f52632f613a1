@@ -1,0 +1,18 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing # <?php echo $data->id; ?></h2>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-striped">
+				<tbody>
+					<tr><td>Nama Golongan</td><td><strong><?php echo $data->nama_golongan; ?></strong></td></tr>
+				</tbody>
+			</table>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('golongan'); ?>">Go Back</a>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

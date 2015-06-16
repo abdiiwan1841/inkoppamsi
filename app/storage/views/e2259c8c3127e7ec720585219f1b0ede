@@ -1,0 +1,24 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Buku Jurnal</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'bukujurnal')); ?>
+<div class="form-group">
+	<?php echo Form::label('tgl_awal','DD-MM-YYYY'); ?>
+	<?php echo Form::text('tgl_awal',Input::old('tgl_awal'),array('class'=>'form-control','placeholder'=>'DD-MM-YYYY')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tgl_akhir','DD-MM-YYYY'); ?>
+	<?php echo Form::text('tgl_akhir',Input::old('tgl_akhir'),array('class'=>'form-control','placeholder'=>'DD-MM-YYYY')); ?>
+</div>
+
+<?php echo Form::submit('Preview',array('class'=>'btn btn-primary btn-sm')); ?>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

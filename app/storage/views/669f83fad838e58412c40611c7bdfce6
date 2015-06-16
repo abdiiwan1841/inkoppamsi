@@ -1,0 +1,19 @@
+<html>
+<head>
+<title><?php echo $title; ?></title>
+<link rel="stylesheet" href="<?php echo asset('/css/bootstrap.min.css'); ?>">
+</head>
+<body>
+<div class='container'>
+<?php $__env->startSection('navbar'); ?>
+	<nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li><a href="<?php echo URL::to('band'); ?>">View All Bands</a></li>
+            <li><a href="<?php echo URL::to('band/create'); ?>">Create a Band</a>
+        </ul>
+    </nav>
+<?php echo $__env->yieldSection(); ?>
+<?php echo $__env->yieldContent('content'); ?>
+</div>
+</body>
+</html>

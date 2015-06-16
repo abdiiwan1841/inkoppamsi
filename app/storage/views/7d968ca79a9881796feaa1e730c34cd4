@@ -1,0 +1,18 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $pdam->id_pdam; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>ID PDAM : </strong><?php echo $pdam->id_pdam; ?><br>
+			<strong>Nama PDAM : </strong><?php echo $pdam->nama_pdam; ?><br>
+			<strong>Alamat : </strong><?php echo $pdam->alamat; ?><br>
+			<strong>Telpon : </strong><?php echo $pdam->telepon; ?><br>
+			<strong>Fax : </strong><?php echo $pdam->fax; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('pdam'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,60 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Edit the Jenis Anggota</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::model($data,array('route'=>array('koperasi.update',$data->id),'method'=>'PUT')); ?>
+<div class="form-group">
+	<?php echo Form::label('nama_koperasi','Nama Koperasi'); ?>
+	<?php echo Form::text('nama_koperasi',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('alamat','Alamat'); ?>
+	<?php echo Form::text('alamat',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('telp','Telp'); ?>
+	<?php echo Form::text('telp',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('fax','Fax'); ?>
+	<?php echo Form::text('fax',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('pengurus1','Pengurus 1'); ?>
+	<?php echo Form::text('pengurus1',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('pengurus2','Pengurus 2'); ?>
+	<?php echo Form::text('pengurus2',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('pengurus3','Pengurus 3'); ?>
+	<?php echo Form::text('pengurus3',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('pengawas','Pengawas'); ?>
+	<?php echo Form::text('pengawas',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('email','Email'); ?>
+	<?php echo Form::email('email',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('simpanan_pokok','Simpanan Pokok'); ?>
+	<?php echo Form::text('simpanan_pokok',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('simpanan_wajib','Simpanan Wajib'); ?>
+	<?php echo Form::text('simpanan_wajib',null,array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Update the Koperasi',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('koperasi'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

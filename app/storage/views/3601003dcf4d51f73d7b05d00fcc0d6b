@@ -1,0 +1,52 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Edit <?php echo $jabatan->id; ?></h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::model($jabatan,array('route'=>array('jabatan.update',$jabatan->id), 'method'=>'PUT')); ?>
+
+
+<div class="form-group">
+	<?php echo Form::label('id','Jabatan ID'); ?>
+	<?php echo Form::text('id',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('nama_jabatan','Jabatan Name'); ?>
+	<?php echo Form::text('nama_jabatan',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tnj_jabatan','Tunjangan Jabatan'); ?>
+	<?php echo Form::text('tnj_jabatan',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tnj_transport','Tunjangan Transport'); ?>
+	<?php echo Form::text('tnj_transport',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tnj_luarkota','Tunjangan Luar Kota'); ?>
+	<?php echo Form::text('tnj_luarkota',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('uang_makan','Uang Makan'); ?>
+	<?php echo Form::text('uang_makan',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('uang_pulsa','Uang Pulsa'); ?>
+	<?php echo Form::text('uang_pulsa',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('sewa_motor','Sewa Motor'); ?>
+	<?php echo Form::text('sewa_motor',null,array('class'=>'form-control')); ?>
+</div>
+
+<?php echo Form::submit('Create the Jabatan',array('class'=>'btn btn-primary')); ?>
+
+<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

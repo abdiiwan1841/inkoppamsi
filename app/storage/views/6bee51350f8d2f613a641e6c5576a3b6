@@ -1,0 +1,24 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Edit  the Division</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::model($divisi,array('route'=>array('division.update',$divisi->id),'method'=>'PUT')); ?>
+<div class="form-group">
+	<?php echo Form::label('id','Division ID'); ?>
+	<?php echo Form::text('id',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('division_name','Division Name'); ?>
+	<?php echo Form::text('division_name',null,array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Update the division',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('division'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

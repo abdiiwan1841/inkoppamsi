@@ -1,0 +1,27 @@
+
+<?php $__env->startSection('content'); ?>
+    <div class='col-sm-4'>
+	<h1>Edit <?php echo $bands->nama; ?></h1>
+	<?php echo HTML::ul($errors->all()); ?>
+	
+	<?php echo Form::model($bands, array('route'=>array('band.update',$bands->id),'method'=>'PUT')); ?>
+	<div class='form-group'>
+		<?php echo Form::label('nama','Nama :'); ?>
+		<?php echo Form::text('nama', null, array('class'=>'form-control')); ?>
+	</div>
+	<div class='form-group'>
+		<?php echo Form::label('email','Email :'); ?>
+		<?php echo Form::text('email', null, array('class'=>'form-control')); ?>
+	</div>
+	<div class='form-group'>
+		<?php echo Form::label('aliran','Aliran :'); ?>
+		<?php echo Form::select('aliran',array('0'=>'Aliran Musik','1'=>'Heavy Metal','2'=>'Hard rock'), null, array('class'=>'form-control')); ?>
+	</div>
+	<div class='form-group'>
+		<?php echo Form::submit('Edit the Band',array('class'=>'btn btn-primary')); ?>
+	</div>
+	<?php echo Form::close(); ?>
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('bands.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

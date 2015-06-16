@@ -1,0 +1,10 @@
+
+<?php $__env->startSection('content'); ?>
+	<h1>Showing <?php echo $bands->nama; ?></h1>
+	<p>
+		<strong>Email : </strong> <?php echo $bands->email; ?><br>
+		<strong>Aliran : </strong> <?php echo $bands->aliran; ?>
+	</p>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('bands.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

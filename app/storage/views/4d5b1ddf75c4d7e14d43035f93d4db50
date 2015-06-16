@@ -1,0 +1,46 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Departemen</h2>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info"><?php echo Session::get('message'); ?></div>
+<?php endif; ?>
+
+<a class="btn btn-primary" href="<?php echo URL::to('departemen/create'); ?>">Create A Departemen</a><br><br>
+
+<table class="table table-bordered table-striped">
+<thead>
+	<tr>
+		<td>Departemen ID</td>
+		<td>Departemen Name</td>
+		<td>Prefix</td>
+		<td>Action</td>
+	</tr>
+</thead>
+<tbody>
+<?php foreach($departemen as $key => $value): ?>
+	<tr>
+		<td><?php echo $value->id; ?></td>
+		<td><?php echo $value->departemen_name; ?></td>
+		<td><?php echo $value->prefix; ?></td>
+		<td>
+			<?php echo Form::open(array('url'=>'departemen/'.$value->id,'class'=>'pull-right')); ?>
+			<?php echo Form::hidden('_method','DELETE'); ?>
+			<?php echo Form::submit('Delete',array('class'=>'btn btn-warning')); ?>
+			<?php echo Form::close(); ?>
+			
+			<a class="btn btn-success" href="<?php echo URL::to('departemen/'.$value->id); ?>">Show</a>
+			<a class="btn btn-info" href="<?php echo URL::to('departemen/'.$value->id.'/edit'); ?>">Edit</a>
+			
+		</td>
+	</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

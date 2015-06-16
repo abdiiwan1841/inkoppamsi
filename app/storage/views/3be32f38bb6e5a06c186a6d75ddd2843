@@ -1,0 +1,15 @@
+
+<?php $__env->startSection('content'); ?>
+	<h1>Authors Home Page</h1>
+	<ul>
+		<?php foreach($authors as $author): ?>
+			<li><?php echo link_to_route('author',$author->name, array($author->id)); ?></li>
+		<?php endforeach; ?>
+	</ul>
+	
+    <p><?php echo link_to_route('add_author', 'New Authors'); ?></p>
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

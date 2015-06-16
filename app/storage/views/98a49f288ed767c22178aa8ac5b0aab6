@@ -1,0 +1,19 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $paket->id_paket; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>ID Paket : </strong><?php echo $paket->id_paket; ?><br>
+			<strong>Nama Paket : </strong><?php echo $paket->nama_paket; ?><br>
+			<strong>Iuran : </strong><?php echo number_format($paket->iuran,0,',','.'); ?><br>
+			<strong>Premi : </strong><?php echo number_format($paket->premi,0,',','.'); ?><br>
+			<strong>Operasional : </strong><?php echo number_format($paket->operasional,0,',','.'); ?><br>
+			<strong>Cadangan : </strong><?php echo number_format($paket->cadangan,0,',','.'); ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('paket'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

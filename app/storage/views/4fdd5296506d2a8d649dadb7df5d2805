@@ -1,0 +1,40 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Showing <?php echo $karyawan->id; ?></h2>
+<div class="jumbotron text-center">
+	<h3><?php echo $karyawan->id; ?></h3>
+	<p>
+		<strong>Nama Karyawan :</strong><?php echo $karyawan->nama_karyawan; ?><bR>
+		<strong>Tempat Lahir :</strong><?php echo $karyawan->tempat_lahir; ?><bR>
+		<strong>Tanggal Lahir :</strong><?php echo $karyawan->tgl_lahir; ?><bR>
+		<strong>Agama :</strong><?php echo $karyawan->agama; ?><bR>
+		<strong>Alamat :</strong><?php echo $karyawan->alamat; ?><bR>
+		<strong>Nomor Telpon :</strong><?php echo $karyawan->no_telp; ?><bR>
+		<strong>Nomor KTP :</strong><?php echo $karyawan->no_ktp; ?><bR>
+		<strong>Pendidikan Akhir :</strong><?php echo $karyawan->pendidikan_akhir; ?><bR>
+		<strong>Tanggal Masuk Kerja :</strong><?php echo $karyawan->tgl_masuk_kerja; ?><bR>
+		<strong>Tanggal Berhenti :</strong><?php echo $karyawan->tgl_berhenti; ?><bR>
+		<strong>Jenis Kelamin :</strong><?php echo $karyawan->jenis_kelamin; ?><bR>
+		<strong>Status Kelamin :</strong><?php echo $karyawan->status_kelamin; ?><bR>
+		<strong>Nomor Jamsostek :</strong><?php echo $karyawan->no_jamsostek; ?><bR>
+		<strong>Nomor Asuransi :</strong><?php echo $karyawan->no_asuransi; ?><bR>
+		<strong>Golongan :</strong><?php echo $karyawan->golongan_id; ?><bR>
+		<strong>Jabatan :</strong><?php echo $karyawan->jabatan_id; ?><bR>
+		<strong>Departemen :</strong><?php echo $karyawan->departemen_id; ?><bR>
+		<strong>Area  :</strong><?php echo $karyawan->area_id; ?><bR>
+		<strong>NPWP :</strong><?php echo $karyawan->npwp; ?><bR>
+		<strong>Tanggal Daftar NPWP :</strong><?php echo $karyawan->tgl_daftarnpwp; ?><bR>
+		<strong>Nomor Rekening Bank :</strong><?php echo $karyawan->no_rek_bank; ?><bR>
+		<strong>Nama Bank :</strong><?php echo $karyawan->nama_bank; ?><bR>
+		<strong>Jumlah Anak :</strong><?php echo $karyawan->jumlah_anak; ?><bR>
+		<strong>foto :</strong><?php echo $karyawan->foto; ?><bR>
+		<strong>Jenis Pegawai :</strong><?php echo $karyawan->jenis_pegawai; ?><bR>
+	</p>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

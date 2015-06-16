@@ -1,0 +1,40 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Create the Profil</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'profil')); ?>
+<div class="form-group">
+	<?php echo Form::label('nama_perusahaan','Nama Perusahaan'); ?>
+	<?php echo Form::text('nama_perusahaan',Input::old('nama_perusahaan'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('alamat','Alamat'); ?>
+	<?php echo Form::textarea('alamat',Input::old('alamat'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('telpon','Telpon'); ?>
+	<?php echo Form::text('telpon',Input::old('telpon'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('fax','Fax'); ?>
+	<?php echo Form::text('fax',Input::old('fax'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('email','Email'); ?>
+	<?php echo Form::email('email',Input::old('emaiil'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('website','Website'); ?>
+	<?php echo Form::text('website',Input::old('website'),array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Create the Rekening',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('setup'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

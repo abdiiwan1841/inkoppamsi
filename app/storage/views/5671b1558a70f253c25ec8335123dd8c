@@ -1,0 +1,19 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $data->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Tanggal Adjustment : </strong><?php echo $data->tanggal_adjust; ?><br>
+			<strong>ID Barang : </strong><?php echo $data->id_barang; ?><br>
+			<strong>Nama Barang : </strong><?php echo $data->barang->nama_barang; ?><br>
+			<strong>Jenis Adjust : </strong><?php echo $data->jenis_adjust; ?><br>
+			<strong>Jumlah Adjustment : </strong><?php echo $data->jml_adjust; ?><br>
+			<strong>Keterangan : </strong><?php echo $data->keterangan; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('adjustment'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.trading', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

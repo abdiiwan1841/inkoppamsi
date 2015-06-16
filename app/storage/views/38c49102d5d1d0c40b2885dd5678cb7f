@@ -1,0 +1,56 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Simpanan</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+
+	</div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('simpanan/create'); ?>">Create New</a><br><br>
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr><th>ID</th><th>Tanggal</th><th>ID Anggota</th><th>ID Jenis</th>
+	<th>Jumlah</th><th>Action</th></tr>
+</thead>
+<tbody>
+	<?php foreach($data as $key => $value): ?>
+		<tr>
+			<td><?php echo $value->id; ?></td>
+			<td><?php echo $value->tanggal_simpanan; ?></td>
+			<td><?php echo $value->id_anggota; ?></td>
+			<td><?php echo $value->id_jenis; ?></td>
+			<td><?php echo number_format($value->jumlah,2,',','.'); ?></td>
+			<td>
+				<?php echo Form::open(array('url'=>'simpanan/'.$value->id,'class'=>'pull-right')); ?>
+
+				<?php echo Form::hidden('_method','DELETE'); ?>
+
+				<?php echo Form::submit('Delete',array('class'=>'btn btn-warning btn-sm')); ?>
+
+				<?php echo Form::close(); ?>
+
+				
+				<a class="btn btn-success btn-sm" href="<?php echo URL::to('simpanan/'.$value->id); ?>">Show</a>
+				<a class="btn btn-info btn-sm" href="<?php echo URL::to('simpanan/'.$value->id.'/edit'); ?>">Edit</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php echo $data->links(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,36 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $data->no_bukti; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>No Bukti : </strong><?php echo $data->no_bukti; ?><br>
+			<strong>Tanggal : </strong><?php echo date('d M Y',strtotime($data->tanggal)); ?><br>
+			<strong>Keterangan : </strong><?php echo $data->keterangan; ?><br>
+			<strong>Total Debet : </strong><?php echo number_format($data->debet,2,',','.'); ?><br>
+			<strong>Total Kredit : </strong><?php echo number_format($data->kredit,2,',','.'); ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('posting/'.$data->tanggal ); ?>">Go Back</a>
+		</p>
+	</div>
+	
+	<table class="table table-stripped table-bordered table-hover">
+	<thead>
+		<tr><th>ID</th><th>ID Rekening</th><th>Nama Rekening</th><th>Debet</th>
+		<th>Kredit</th></tr>
+	</thead>
+	<tbody>
+		<?php foreach($detail as $key => $value): ?>
+			<tr>
+				<td><?php echo $value->id; ?></td>
+				<td><?php echo $value->id_rekening; ?></td>
+				<td><?php echo $value->accrekening->nama_rekening; ?></td>
+				<td><?php echo number_format($value->debet,2,',','.'); ?></td>
+				<td><?php echo $value->kredit; ?></td>
+			</tr>
+		<?php endforeach; ?>
+	</tbody>
+	</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,64 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Rekenings</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+	</div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('setup/create'); ?>">Create New</a><br><br>
+
+<?php echo Form::open(array('url'=>'cari_rekening')); ?>
+	<div class="form-group">
+		<?php echo Form::label('nama_rekening','Masukan Nama Rekening'); ?>
+		<?php echo Form::text('nama_rekening',Input::old('nama_rekening'),array('class'=>'form-control')); ?>
+	</div>
+	<div class="form-group">
+		<?php echo Form::submit('Find Rekening',array('class' => 'btn btn-primary')); ?>
+	</div>
+<?php echo Form::close(); ?>
+
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr><th>ID Rekening</th><th>Nama Rekening</th><th>Normal Balance</th>
+	<th>Gol.Lap</th><th>Saldo Awal Debet</th>
+	<th>Saldo Awal Kredit</th><th>Action</th></tr>
+</thead>
+<tbody>
+	<?php foreach($setup as $key => $value): ?>
+		<tr>
+			<td><?php echo $value->id_rekening; ?></td>
+			<td><?php echo $value->nama_rekening; ?></td>
+			<td><?php echo $value->normal_balance; ?></td>
+			<td><?php echo $value->id_golongan; ?></td>
+			<td><?php echo $value->saldo_awal_debet; ?></td>
+			<td><?php echo $value->saldo_awal_kredit; ?></td>
+			<td>
+				<?php echo Form::open(array('url'=>'setup/'.$value->id_rekening,'class'=>'pull-right')); ?>
+				<?php echo Form::hidden('_method','DELETE'); ?>
+				<?php echo Form::submit('Delete',array('class'=>'btn btn-warning btn-sm')); ?>
+				<?php echo Form::close(); ?>
+				
+				<a class="btn btn-success btn-sm" href="<?php echo URL::to('setup/'.$value->id_rekening); ?>">Show</a>
+				<a class="btn btn-info btn-sm" href="<?php echo URL::to('setup/'.$value->id_rekening.'/edit'); ?>">Edit</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php if(Input::get('nama_rekening')==""){ ?>
+<?php echo $setup->links(); ?>
+<?php } ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

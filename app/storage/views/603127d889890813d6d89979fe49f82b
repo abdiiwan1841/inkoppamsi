@@ -1,0 +1,20 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Create Posting</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'posting')); ?>
+<div class="form-group">
+	<?php echo Form::label('tanggal','Tanggal Transaksi'); ?>
+	<?php echo Form::select('tanggal',$data,Input::old('tanggal'),array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Create the Posting',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('posting'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

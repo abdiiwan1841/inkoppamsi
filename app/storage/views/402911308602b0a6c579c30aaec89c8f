@@ -1,0 +1,15 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $jenissimpan->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Jenis Simpanan : </strong><?php echo $jenissimpan->jenis_simpanan; ?><br>
+			<strong>Jumlah : </strong><?php echo number_format($jenissimpan->jumlah,2,',','.'); ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('jenissimpanan'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

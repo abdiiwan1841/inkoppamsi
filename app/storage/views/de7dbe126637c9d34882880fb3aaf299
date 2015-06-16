@@ -1,0 +1,22 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $setup->id_rekening; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>ID Rekening : </strong><?php echo $setup->id_rekening; ?><br>
+			<strong>Nama Rekening : </strong><?php echo $setup->nama_rekening; ?><br>
+			<strong>ID Klasifikasi : </strong><?php echo $setup->id_klasifikasi; ?><br>
+			<strong>Parent ID : </strong><?php echo $setup->parent_id; ?><br>
+			<strong>Normal Balance : </strong><?php echo $setup->normal_balance; ?><br>
+			<strong>Posisi : </strong><?php echo $setup->posisi; ?><br>
+			<strong>Saldo Awal Debet : </strong><?php echo number_format($setup->saldo_awal_debet,2,',','.'); ?><br>
+			<strong>Saldo Awal Kredit : </strong><?php echo number_format($setup->saldo_awal_kredit,2,',','.'); ?><br>
+			<br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('setup'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

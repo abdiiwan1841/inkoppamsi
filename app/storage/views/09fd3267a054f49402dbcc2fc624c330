@@ -1,0 +1,24 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $profil->id; ?></h2>
+	<div class="col-md-6">
+		<table class="table table-striped table-hover">
+		<tbody>
+			<tr><td>ID Perusahaan</td><td><strong><?php echo $profil->id; ?></strong></td></tr>
+			<tr><td>Nama Perusahaan</td><td><strong><?php echo $profil->nama_perusahaan; ?></strong></td></tr>
+			<tr><td>Alamat</td><td><strong><?php echo $profil->alamat; ?></strong></td></tr>
+			<tr><td>Telpon</td><td><strong><?php echo $profil->telpon; ?></strong></td></tr>
+			<tr><td>Fax</td><td><strong><?php echo $profil->fax; ?></strong></td></tr>
+			<tr><td>Email</td><td><strong><?php echo $profil->email; ?></strong></td></tr>
+			<tr><td>Website</td><td><strong><?php echo $profil->website; ?></strong></td></tr>
+			<tr><td>Ketua</td><td><strong><?php echo $profil->ketua; ?></strong></td></tr>
+			<tr><td>Manager</td><td><strong><?php echo $profil->manager; ?></strong></td></tr>
+		</tbody>
+		</table>
+		<a class="btn btn-primary btn-sm" href="<?php echo URL::to('profil'); ?>">Go Back</a>
+	</div>	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

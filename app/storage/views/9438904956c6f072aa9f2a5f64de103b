@@ -1,0 +1,51 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Payment</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+
+	</div>
+<?php endif; ?>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Datatable::table()
+	->addColumn('id_peserta','cicilan_ke','iuran','tanggal bayar','status','Action')
+	->setOptions('aoColumnDefs',array(
+			array(
+				'bVisible' => 'id_peserta' ,
+				'aTargets' => [0]),
+			array(
+				'bVisible' => 'cicilan_ke',
+				'aTargets' => [1]),
+			array(
+				'bVisible' => 'iuran',
+				'aTargets' => [2]),
+			array(
+				'bVisible' => 'tanggal_bayar',
+				'aTargets' => [3]),
+			array(
+				'bVisible' => 'status',
+				'aTargets' => [4]),
+			array(
+				'bSortable' => false,
+				'aTargets' => [5])
+			))
+	->setOptions('bProcessing',true)
+	->setUrl(route('iuran.index'))
+	->render(); ?>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

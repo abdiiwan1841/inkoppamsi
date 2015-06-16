@@ -1,0 +1,14 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+
+<h2>Showing <?php echo $area->area_name; ?></h2>
+<div class="jumbotron text-center">
+	<h3><?php echo $area->id; ?></h3>
+	<p>
+		<strong>Nama Area : </strong><?php echo $area->area_name; ?>
+	</p>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('areas.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

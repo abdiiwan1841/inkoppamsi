@@ -1,0 +1,17 @@
+
+<?php $__env->startSection('navbar'); ?>
+@parent
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h1>Showing <?php echo $band->nama; ?></h1>
+<div class="jumbotron text-center">
+	<h2><?php echo $band->nama; ?></h2>
+	<p>
+		<strong>Email : </strong><?php echo $band->nama; ?><br>
+		<strong>Aliran : </strong><?php echo $band->aliran; ?>
+	</p>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

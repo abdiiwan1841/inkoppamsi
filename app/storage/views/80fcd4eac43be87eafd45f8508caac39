@@ -1,0 +1,18 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Showing <?php echo $golongan->golongan_name; ?></h2>
+
+<div class="jumbotron text-center">
+	<h3><?php echo $golongan->id; ?></h3>
+	<p>
+		<strong>Gaji Pokok : </strong><?php echo number_format($golongan->gaji_pokok,2,',','.'); ?>
+	</p>
+</div>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

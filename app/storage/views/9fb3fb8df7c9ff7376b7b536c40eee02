@@ -1,0 +1,70 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="col-md-4">
+
+<h2>Edit the Rekening</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Form::model($setup,array('route'=>array('setup.update',$setup->id_rekening),'method'=>'PUT')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id_rekening','ID Rekening'); ?>
+
+	<?php echo Form::text('id_rekening',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('nama_rekening','Nama Rekening'); ?>
+
+	<?php echo Form::text('nama_rekening',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_klasifikasi','ID Klasifikasi'); ?>
+
+	<?php echo Form::select('id_klasifikasi',$klasifikasi,null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('parent_id','Parent ID'); ?>
+
+	<?php echo Form::select('parent_id',$rekening,null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('normal_balance','Normal Balance'); ?>
+
+	<?php echo Form::select('normal_balance',array('DEBET'=>'DEBET','KREDIT'=>'KREDIT'),null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_golongan','Golongan'); ?>
+
+	<?php echo Form::select('id_golongan',$golongan,null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('saldo_awal_debet','Saldo Awal Debet'); ?>
+
+	<?php echo Form::text('saldo_awal_debet',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('saldo_awal_kredit','Saldo Awal Kredit'); ?>
+
+	<?php echo Form::text('saldo_awal_kredit',null,array('class'=>'form-control')); ?>
+
+</div>
+<?php echo Form::submit('Update the Setup',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('setup'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

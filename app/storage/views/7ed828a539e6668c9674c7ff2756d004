@@ -1,0 +1,58 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Golongan</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+	</div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('golongan/create'); ?>">Create New</a><br><br>
+
+<?php echo Form::open(array('url'=>'cari_golongan')); ?>
+	<div class="form-group">
+		<?php echo Form::label('nama_golongan','Masukan Nama Golongan'); ?>
+		<?php echo Form::text('nama_golongan',Input::old('nama_golongan'),array('class'=>'form-control')); ?>
+	</div>
+	<div class="form-group">
+		<?php echo Form::submit('Find Golongan',array('class' => 'btn btn-primary')); ?>
+	</div>
+<?php echo Form::close(); ?>
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr><th>ID</th><th>Nama Golongan</th><th>Action</th></tr>
+</thead>
+<tbody>
+	<?php foreach($data as $key => $value): ?>
+		<tr>
+			<td><?php echo $value->id; ?></td>
+			<td><?php echo $value->nama_golongan; ?></td>
+			<td>
+				<?php echo Form::open(array('url'=>'golongan/'.$value->id,'class'=>'pull-right')); ?>
+				<?php echo Form::hidden('_method','DELETE'); ?>
+				<?php echo Form::submit('Delete',array('class'=>'btn btn-warning btn-sm')); ?>
+				<?php echo Form::close(); ?>
+				
+				<a class="btn btn-success btn-sm" href="<?php echo URL::to('golongan/'.$value->id); ?>">Show</a>
+				<a class="btn btn-info btn-sm" href="<?php echo URL::to('golongan/'.$value->id.'/edit'); ?>">Edit</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php if(Input::get('nama_golongan')==""){ ?>
+<?php echo $data->links(); ?>
+<?php } ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

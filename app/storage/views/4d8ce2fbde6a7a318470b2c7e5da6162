@@ -1,0 +1,50 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="col-md-4">
+<h2>Edit the PDAM</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Form::model($pdam,array('route'=>array('pdam.update',$pdam->id_pdam),'method'=>'PUT')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id_pdam','ID PDAM'); ?>
+
+	<?php echo Form::text('id_pdam',null,array('class'=>'form-control','readonly')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('nama_pdam','Nama PDAM'); ?>
+
+	<?php echo Form::text('nama_pdam',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('alamat','Alamat'); ?>
+
+	<?php echo Form::textarea('alamat',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('telepon','Telepon'); ?>
+
+	<?php echo Form::text('telepon',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('fax','Fax'); ?>
+
+	<?php echo Form::text('fax',null,array('class'=>'form-control')); ?>
+
+</div>
+<?php echo Form::submit('Update the PDAM',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('pdam'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

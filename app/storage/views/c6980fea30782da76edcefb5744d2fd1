@@ -1,0 +1,64 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="col-md-4">
+
+<h2>Form Payment</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Form::model($iuran,array('route'=>array('iuran.update',$iuran->id),'method'=>'PUT')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id_peserta','ID Peserta'); ?>
+
+	<?php echo Form::text('id_peserta',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('cicilan_ke','Cicilan Ke-'); ?>
+
+	<?php echo Form::text('cicilan_ke',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('iuran','Iuran'); ?>
+
+	<?php echo Form::text('iuran',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('keterangan','Keterangan'); ?>
+
+	<?php echo Form::textarea('keterangan',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('tanggal_bayar','Tanggal Bayar'); ?>
+
+	<?php echo Form::text('tanggal_bayar',date('d-m-Y',strtotime($iuran->tanggal_bayar)),array('class'=>'form-control','placeholder'=>'DD-MM-YYYY')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_bank','Bank'); ?>
+
+	<?php echo Form::select('id_bank',array($bank),null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('status','Status'); ?>
+
+	<?php echo Form::select('status',array('LUNAS'=>'LUNAS','TUNDA'=>'TUNDA'),null,array('class'=>'form-control')); ?>
+
+</div>
+<?php echo Form::submit('Pay Now',array('class'=>'btn btn-primary btn-sm',$status)); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('iuran'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

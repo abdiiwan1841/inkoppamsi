@@ -1,0 +1,30 @@
+
+<?php $__env->startSection('navbar'); ?>
+@parent
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h1>Create a Band</h1>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'bands')); ?>
+	<div class="form-group">
+		<?php echo Form::label('nama','Nama'); ?>
+		<?php echo Form::text('nama',Input::old('nama'),array('class'=>'form-control')); ?>
+	</div>
+	<div class="form-group">
+		<?php echo Form::label('email','Email'); ?>
+		<?php echo Form::text('email',Input::old('email'),array('class'=>'form-control')); ?>
+	</div>
+	<div class="form-group">
+		<?php echo Form::label('aliran','Aliran'); ?>
+		<?php echo Form::select('aliran',array('0'=>'aliran musik','1'=>'heavy metal','2'=>'hard rock','3'=>'progresive rock'),Input::old('aliran'),array('class'=>'form-control')); ?>
+	</div>
+	<?php echo Form::submit('Create a Band',array('class'=>'btn btn-primary')); ?>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,54 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>View All Jabatan</h2>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info"><?php echo Session::get('message'); ?></div>
+<?php endif; ?>
+
+<a class="btn btn-primary" href="<?php echo URL::to('jabatan/create'); ?>">Create A Jabatan</a><br><Br>
+
+<table class="table table-bordered table-striped">
+<thead>
+	<tr>
+		<td>Jabatan ID</td>
+		<td>Jabatan Name</td>
+		<td>Tnj.Jabatan</td>
+		<td>Tnj.Transport</td>
+		<td>Tnj.Luar Kota</td>
+		<td>U.Makan</td>
+		<td>U.Pulsa</td>
+		<td>Sewa Motor</td>
+		<td>Action</td>
+	</tr>
+</thead>
+<tbody>
+<?php foreach($jabatan as $key => $value): ?>
+	<tr>
+		<td><?php echo $value->id; ?></td>
+		<td><?php echo $value->nama_jabatan; ?></td>
+		<tD><?php echo number_format($value->tnj_jabatan,2,',','.'); ?></td>
+		<td><?php echo number_format($value->tnj_transport,2,',','.'); ?></td>
+		<td><?php echo number_format($value->tnj_luarkota,2,',','.'); ?></td>
+		<td><?php echo number_format($value->uang_makan,2,',','.'); ?></td>
+		<td><?php echo number_format($value->uang_pulsa,2,',','.'); ?></td>
+		<td><?php echo number_format($value->sewa_motor,2,',','.'); ?></td>
+		<td>
+			<?php echo Form::open(array('url'=>'jabatan/'.$value->id, 'class'=>'pull-right')); ?>
+			<?php echo Form::hidden('_method','DELETE'); ?>
+			<?php echo Form::submit('Delete',array('class'=>'btn btn-warning')); ?>
+			<?php echo Form::close(); ?>
+			
+			<a class="btn btn-success" href="<?php echo URL::to('jabatan/'.$value->id); ?>">Show</a>
+			<a class="btn btn-info" href="<?php echo URL::to('jabatan/'.$value->id.'/edit'); ?>" >Edit</a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

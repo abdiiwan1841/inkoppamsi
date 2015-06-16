@@ -1,0 +1,16 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Showing <?php echo $grade->id; ?></h2>
+
+<div class="jumbotron text-center">
+	<h3><?php echo $grade->id; ?></h3>
+	<p>
+		<strong>Grade Name : </strong><?php echo $grade->grade_name; ?>
+	</p>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

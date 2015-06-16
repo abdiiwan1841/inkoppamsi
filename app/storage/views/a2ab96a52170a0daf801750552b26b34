@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SK-Project</title>
+    <link rel="stylesheet" href="<?php echo asset('/assets//css/bootstrap.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo asset('/assets//css/bootstrap-theme.min.css'); ?>">
+	<?php echo HTML::script("assets/js/bootstrap.min.js"); ?>
+	<?php echo HTML::script("assets/jquery.js"); ?> 
+</head>
+<body>
+	<?php echo $__env->yieldContent('content'); ?>
+</body>
+</html>

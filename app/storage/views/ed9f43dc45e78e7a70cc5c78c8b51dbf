@@ -1,0 +1,115 @@
+<?php $__env->startSection('content'); ?>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Halaman
+            <small>Tambah Group</small>
+        </h1>
+ 
+       <?php echo Form::open(array('url' => 'group')); ?>
+             
+            <div class="form-group">
+                <?php echo Form::label('group', 'Group'); ?>
+                <?php echo Form::text('group', null, array('class' => 'form-control','placeholder'=>'masukkan group')); ?>
+                <?php echo '<div>'.$errors->first('group').'</div>'; ?>
+            </div>
+             
+            <div class="form-group">
+                <?php echo Form::label('account', 'Account'); ?> :
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[account.read]', '1'); ?> Read
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[account.create]', '1'); ?> Create
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[account.update]', '1'); ?> Update
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[account.destroy]', '1'); ?> Destroy
+                </label>
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('subaccount', 'Sub Account'); ?> :
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[subaccount.read]', '1'); ?> Read
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[subaccount.create]', '1'); ?> Create
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[subaccount.update]', '1'); ?> Update
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[subaccount.destroy]', '1'); ?> Destroy
+                </label>
+             
+            </div>
+            <div class="form-group">
+                <?php echo Form::label('coa', 'Cart Of Account'); ?> :
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[coa.read]', '1'); ?> Read
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[coa.create]', '1'); ?> Create
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[coa.update]', '1'); ?> Update
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[coa.destroy]', '1'); ?> Destroy
+                </label>
+            </div>
+			<div class="form-group">
+                <?php echo Form::label('register', 'Register'); ?> :
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[register.read]', '1'); ?> Read
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[register.create]', '1'); ?> Create
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[register.update]', '1'); ?> Update
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[register.destroy]', '1'); ?> Destroy
+                </label>
+            </div>
+			<div class="form-group">
+                <?php echo Form::label('group', 'Group'); ?> :
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[group.read]', '1'); ?> Read
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[group.create]', '1'); ?> Create
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[group.update]', '1'); ?> Update
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[group.destroy]', '1'); ?> Destroy
+                </label>
+            </div>
+			<div class="form-group">
+                <?php echo Form::label('user', 'Usert'); ?> :
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[user.read]', '1'); ?> Read
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[user.create]', '1'); ?> Create
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[user.update]', '1'); ?> Update
+                </label>
+                <label class="checkbox-inline">
+                <?php echo Form::checkbox('cb[user.destroy]', '1'); ?> Destroy
+                </label>
+            </div>
+            <?php echo Form::submit('SIMPAN', array('class' => 'form-control')); ?>
+ 
+        <?php echo Form::close(); ?>
+ 
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

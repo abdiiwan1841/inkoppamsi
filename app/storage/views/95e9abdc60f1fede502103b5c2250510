@@ -1,0 +1,55 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $data->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Tanggal Pinjam : </strong><?php echo $data->tanggal_pinjam; ?><br>
+			<strong>ID Anggota : </strong><?php echo $data->id_anggota; ?><br>
+			<strong>Pokok Pembiayaan : </strong><?php echo number_format($data->pokok_pembiayaan,2,',','.'); ?><br>
+			<strong>Perkiraan Nisbah / Bagi hasil : </strong><?php echo number_format($data->perkiraan_nisbah,2,',','.'); ?><br>
+			<strong>Maksimum Pembiayaan : </strong><?php echo number_format($data->maksimum_pembiayaan,2,',','.'); ?><br>
+			<strong>Jangka Waktu : </strong><?php echo $data->jangka_waktu; ?><br>
+			<strong>Keterangan : </strong><?php echo $data->keterangan; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('bayarpinjaman'); ?>">Go Back</a>
+		</p>
+	</div>
+	<table class="table table-bordered table-hover table-striped">
+	<thead>
+		<tr>
+			<th>Id</th><th>Cicilan ke</th>
+			<th>Angsuran Pokok</th><th>Bagi Hasil</th>
+			<th>Total Angsuran</th><th>Sisa Pembiayaan</th>
+			<th>Tgl Bayar</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach($detail as $key => $value): ?>
+		<tr>
+			<td><?php echo $value->id; ?></td>
+			<td><?php echo $value->cicilan_ke; ?></td>
+			<td><?php echo number_format($value->angsuran_pokok,2,',','.'); ?></td>
+			<td><?php echo number_format($value->perkiraan_bagi_hasil,2,',','.'); ?></td>
+			<td><?php echo number_format($value->total_angsuran,2,',','.'); ?></td>
+			<td><?php echo number_format($value->sisa_pembiayaan,2,',','.'); ?></td>
+			<td>
+				<?php 
+					if($value->tanggal_bayar == '0000-00-00'){
+				?>		
+						<a class="btn btn-success btn-sm" href="<?php echo URL::to('bayarpinjaman/'.$value->id.'/edit'); ?>">Bayar</a>
+				<?php
+					}else{
+				?>
+						<?php echo date('d M Y',strtotime($value->tanggal_bayar)); ?>
+				<?php 
+					}
+				?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</tbody>	
+	</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,27 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="col-md-4">
+<h2>Rugi Laba</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Form::open(array('url'=>'rugilaba','target'=>'_blank')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('tanggal','Tanggal'); ?>
+
+	<?php echo Form::text('tanggal',Input::old('tanggal'),array('class'=>'form-control','placeholder'=>'DD-MM-YYYY')); ?>
+
+</div>
+
+<?php echo Form::submit('Preview',array('class'=>'btn btn-primary btn-sm')); ?>
+
+<?php echo Form::close(); ?>
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

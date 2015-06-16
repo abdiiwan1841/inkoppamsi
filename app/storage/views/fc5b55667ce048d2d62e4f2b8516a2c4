@@ -1,0 +1,28 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $claim->id_claim; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>ID Claim : </strong><?php echo $claim->id_claim; ?><br>
+			<strong>Nama Lengkap : </strong><?php echo $claim->nama_lengkap; ?><br>
+			<strong>Tempat Lahir : </strong><?php echo $claim->tempat_lahir; ?><br>
+			<strong>Tanggal Lahir : </strong><?php echo date('d M Y',strtotime($claim->tanggal_lahir)); ?><br>
+			<strong>Alamat Rumah : </strong><?php echo $claim->alamat_rumah; ?><br>
+			<strong>Hubungan : </strong><?php echo $claim->hubungan; ?><br>
+			<strong>Jenis Pengajuan : </strong><?php echo $claim->jenis_pengajuan; ?><br>
+			<strong>ID Peserta : </strong><?php echo $claim->peserta->id_peserta; ?><br>
+			<strong>Nama Peserta : </strong><?php echo $claim->peserta->nama_peserta; ?><br>
+			<strong>Status : </strong><?php echo $claim->status->keterangan; ?><br>
+			<strong>Keterangan : </strong><?php echo $claim->keterangan; ?><br>
+			<strong>Bank : </strong><?php echo $claim->bank->nama_bank; ?><br>
+			<strong>Cabang : </strong><?php echo $claim->cabang; ?><br>
+			<strong>Nama Rekening : </strong><?php echo $claim->nama_rekening; ?><br>
+			<strong>Nomor Rekening : </strong><?php echo $claim->no_rekening; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('claim'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

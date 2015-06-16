@@ -1,0 +1,31 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $peserta->id_peserta; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>ID Peserta : </strong><?php echo $peserta->id_peserta; ?><br>
+			<strong>Nama Peserta : </strong><?php echo $peserta->nama_peserta; ?><br>
+			<strong>Tempat Lahir : </strong><?php echo $peserta->tempat_lahir; ?><br>
+			<strong>Tanggal Lahir : </strong><?php echo date('d M Y',strtotime($peserta->tanggal_lahir)); ?><br>
+			<strong>Jenis Kelamin : </strong><?php echo $peserta->jenis_kelamin; ?><br>
+			<strong>Alamat : </strong><?php echo $peserta->alamat; ?><br>
+			<strong>Telpon : </strong><?php echo $peserta->telpon; ?><br>
+			<strong>Handphone : </strong><?php echo $peserta->handphone; ?><br>
+			<strong>Nama PDAM : </strong><?php echo $peserta->pdam->nama_pdam; ?><br>
+			<strong>Paket PHT : </strong><?php echo $peserta->paket->nama_paket; ?><br>
+			<strong>Tanggal Masuk : </strong><?php echo date('d M Y',strtotime($peserta->tanggal_masuk)); ?><br>
+			<strong>Tanggal Berhenti : </strong><?php echo date('d M Y',strtotime($peserta->tanggal_berhenti)); ?><br>
+			<strong>Tanggal Proses : </strong><?php echo date('d M Y',strtotime($peserta->tanggal_proses)); ?><br>
+			<strong>Nama Ahli Waris : </strong><?php echo $peserta->nama_ahli_waris; ?><br>
+			<strong>Nama Bank : </strong><?php echo $peserta->bank->nama_bank; ?><br>
+			<strong>Nomor Rekening : </strong><?php echo $peserta->nomor_rekening; ?><br>
+			<strong>Atas Nama : </strong><?php echo $peserta->atas_nama; ?><br>
+			<strong>Status : </strong><?php echo $peserta->status->keterangan; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('peserta'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

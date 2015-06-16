@@ -1,0 +1,52 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Create the Anggota</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'anggota')); ?>
+<div class="form-group">
+	<?php echo Form::label('id','ID Anggota'); ?>
+	<?php echo Form::text('id',Input::old('id'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('nama_anggota','Nama Anggota'); ?>
+	<?php echo Form::text('nama_anggota',Input::old('nama_anggota'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('jk','Jenis Kelamin'); ?>
+	<?php echo Form::select('jk',array('Pria'=>'Pria','wanita'=>'Wanita'),Input::old('jk'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tempat_lahir','Tempat Lahir'); ?>
+	<?php echo Form::text('tempat_lahir',Input::old('tempat_lahir'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tanggal_lahir','Tanggal Lahir'); ?>
+	<?php echo Form::text('tanggal_lahir',Input::old('tanggal_lahir'),array('class'=>'form-control','placeholder'=>'DD-MM-YYYY')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('alamat','Alamat'); ?>
+	<?php echo Form::text('alamat',Input::old('alamat'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('hp','HP'); ?>
+	<?php echo Form::text('hp',Input::old('hp'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('no_identitas','No Identitas'); ?>
+	<?php echo Form::text('no_identitas',Input::old('no_identitas'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_pdam','ID PDAM'); ?>
+	<?php echo Form::select('id_pdam',$data,Input::old('id_pdam'),array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Create the Anggota',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('anggota'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

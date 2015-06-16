@@ -1,0 +1,22 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Showing <?php echo $jabatan->id; ?> </h2>
+<div class="jumbotron text-center">
+	<h3><?php echo $jabatan->id; ?></h3>
+	<p>
+		<strong>Jabatan ID :</strong><?php echo $jabatan->id; ?><br>
+		<strong>Jabatan Name :</strong><?php echo $jabatan->nama_jabatan; ?><br>
+		<strong>Tujangan Jabatan :</strong><?php echo $jabatan->tnj_jabatan; ?><br>
+		<strong>Tunjangan Transport :</strong><?php echo $jabatan->tnj_transport; ?><br>
+		<strong>Tunjangan Luar Kota :</strong><?php echo $jabatan->tnj_luarkota; ?><br>
+		<strong>Uang Makan :</strong><?php echo $jabatan->uang_makan; ?><br>
+		<strong>Uang Pulsa :</strong><?php echo $jabatan->uang_pulsa; ?><br>
+		<strong>Sewa Motor :</strong><?php echo $jabatan->sewa_motor; ?>
+	</p>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

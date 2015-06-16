@@ -1,0 +1,16 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $data->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Nama Barang : </strong><?php echo $data->nama_barang; ?><br>
+			<strong>Satuan : </strong><?php echo $data->satuan; ?><br>
+			<strong>Stok : </strong><?php echo $data->stok; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('barang'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.trading', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

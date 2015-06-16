@@ -1,0 +1,60 @@
+<?php $__env->startSection('navbar'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Register</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+
+	</div>
+<?php endif; ?>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Form::open(array('url' => 'register')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('first_name','First Name'); ?>
+
+	<?php echo Form::text('first_name',Input::old('first_name'),array('class'=>'form-control','placeholder'=>'First Name')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('last_name','Last Name'); ?>
+
+	<?php echo Form::text('last_name',Input::old('last_name'),array('class'=>'form-control','placeholder'=>'Last Name')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('email','Email'); ?>
+
+	<?php echo Form::text('email',Input::old('email'),array('class'=>'form-control','placeholder'=>'Email')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('password','Password'); ?>
+
+	<?php echo Form::password('password',array('class'=>'form-control','placeholder'=>'Password')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('password_confirmation','Password Confirmation'); ?>
+
+	<?php echo Form::password('password_confirmation',array('class'=>'form-control','placeholder'=>'Password Confirmation')); ?>
+
+</div>
+<?php echo Form::submit('Register',array('class'=>'btn btn-primary')); ?>
+
+
+<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

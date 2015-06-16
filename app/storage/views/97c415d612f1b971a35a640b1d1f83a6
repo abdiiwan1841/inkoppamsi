@@ -1,0 +1,59 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Payment</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+	</div>
+<?php endif; ?>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'iuran')); ?>
+<div class="form-group">
+	<?php echo Form::label('nama_peserta','Masukan Nama Peserta'); ?>
+	<?php echo Form::text('nama_peserta',Input::old('nama_peserta'),array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Find ID Peserta',array('class'=>'btn btn-primary btn-sm')); ?>
+<?php echo Form::close(); ?>
+<br>
+
+
+
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr><th>ID Peserta</th><th>Nama Peserta</th><th>Cicilan Ke</th><th>Iuran</th>
+	<th>Tgl Bayar</th><tH>Status</th><th>Action</th></tr>
+</thead>
+<tbody>
+	<?php foreach($iuran as $key => $value): ?>
+		<tr>
+			<td><?php echo $value->id_peserta; ?></td>
+			<td><?php echo $value->peserta->nama_peserta; ?></td>
+			<td><?php echo $value->cicilan_ke; ?></td>
+			<td><?php echo number_format($value->iuran,2,'.',','); ?></td>
+			<td><?php echo date('d M Y',strtotime($value->tanggal_bayar)); ?></td>
+			<td><?php echo $value->status; ?></td>
+			<td>
+				<a class="btn btn-success btn-sm" href="<?php echo URL::to('iuran/'.$value->id ); ?>">Show</a>
+				<a class="btn btn-info btn-sm" href="<?php echo URL::to('iuran/'.$value->id.'/edit'); ?>">Payment</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</tbody>
+</table>
+<?php if(Input::get('nama_peserta')==""){ ?>
+<?php echo $iuran->links(); ?>
+<?php } ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

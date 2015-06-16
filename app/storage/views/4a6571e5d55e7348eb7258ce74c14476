@@ -1,0 +1,22 @@
+
+<?php $__env->startSection('content'); ?>
+	<h1>Create New Authors</h1>
+	
+	<?php echo Form::open(array('url'=>'authors/create','method'=>'post')); ?>
+	
+	<p>
+		<?php echo Form::label('name','Name : '); ?><br>
+		<?php echo Form::text('name'); ?>
+	</p>
+	<p>
+		<?php echo Form::label('bio','Biography : '); ?><bR>
+		<?php echo Form::textarea('bio'); ?>
+	</p>
+	<p>
+		<?php echo Form::submit('Add Author'); ?>
+	</p>
+	
+	<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

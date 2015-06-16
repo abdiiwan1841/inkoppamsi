@@ -1,0 +1,48 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Edit the Penjualan</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::model($data,array('route'=>array('penjualan.update',$data->id),'method'=>'PUT')); ?>
+<div class="form-group">
+	<?php echo Form::label('id','ID Penjualan'); ?>
+	<?php echo Form::text('id',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_pelanggan','Pelanggan'); ?>
+	<?php echo Form::select('id_pelanggan',$pelanggan,null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_ekspedisi','Ekspedisi'); ?>
+	<?php echo Form::select('id_ekspedisi',$ekspedisi,null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('jumlah','Jumlah'); ?>
+	<?php echo Form::text('jumlah',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('diskon','Diskon'); ?>
+	<?php echo Form::text('diskon',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('ongkos_kirim','Ongkos Kirim'); ?>
+	<?php echo Form::text('ongkos_kirim',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('ppn','PPN'); ?>
+	<?php echo Form::text('ppn',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('total','Total'); ?>
+	<?php echo Form::text('total',null,array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Edit the Penjualan',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('penjualan'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.trading', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

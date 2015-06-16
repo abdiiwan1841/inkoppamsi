@@ -1,0 +1,19 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $supplier->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Nama Supplier : </strong><?php echo $supplier->nama_supplier; ?><br>
+			<strong>Kota : </strong><?php echo $supplier->kota; ?><br>
+			<strong>Contact : </strong><?php echo $supplier->contact; ?><br>
+			<strong>Telpon : </strong><?php echo $supplier->telpon; ?><br>
+			<strong>Produk : </strong><?php echo $supplier->produk; ?><br>
+			<strong>Email : </strong><?php echo $supplier->email; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('supplier'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

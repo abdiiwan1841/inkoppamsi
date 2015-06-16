@@ -1,0 +1,35 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Create the Periode</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Form::open(array('url'=>'periode')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id','Periode ID'); ?>
+	<?php echo Form::text('id',Input::old('id'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tgl_awal','Tgl Awal'); ?>
+	<?php echo Form::text('tgl_awal',Input::old('tgl_awal'),array('class'=>'form-control','placeholder'=>'YYYY-MM-DD')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tgl_akhir','Tgl Akhir'); ?>
+	<?php echo Form::text('tgl_akhir',Input::old('tgl_akhir'),array('class'=>'form-control','placeholder'=>'YYYY-MM-DD')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tgl_efektif','Tgl Efektif'); ?>
+	<?php echo Form::text('tgl_efektif',Input::old('tgl_efektif'),array('class'=>'form-control','placeholder'=>'YYYY-MM-DD')); ?>
+</div>
+
+<?php echo Form::submit('Create the Periode',array('class'=>'btn btn-primary','placeholder'=>'YYYY-MM-DD')); ?>
+
+
+<?php echo Form::close(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,9 @@
+
+<?php $__env->startSection('content'); ?>
+	<h1><?php echo $author->name; ?></h1>
+	
+	<p><?php echo $author->bio; ?></p>
+	
+	<p><small><?php echo $author->updated_at; ?></small></p>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>;

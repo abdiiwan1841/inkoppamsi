@@ -1,0 +1,15 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $subaccount->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>SubAccount ID : </strong><?php echo $subaccount->id; ?><br>
+			<strong>SubAccount Name : </strong><?php echo $subaccount->subaccount_name; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('subaccount'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

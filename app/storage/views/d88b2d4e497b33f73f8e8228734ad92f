@@ -1,0 +1,13 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<?php foreach($manfaat as $key => $value): ?>
+	<?php echo $value->id_paket; ?>
+<?php endforeach; ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

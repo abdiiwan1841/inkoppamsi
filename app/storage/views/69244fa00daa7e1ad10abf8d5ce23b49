@@ -1,0 +1,29 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Laporan Peserta</h2>
+
+<?php echo Form::open(array('url'=>'tampilpeserta')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id_status','Status PHT'); ?>
+
+	<?php echo Form::select('id_status',array('Pilih Status'=>$status),Input::old('id_status'),array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_pdam','Cabang PDAM'); ?>
+
+	<?php echo Form::select('id_pdam',array('Pilih Cabang PDAM'=>$pdam),Input::old('id_pdam'),array('class'=>'form-control')); ?>
+
+</div>
+
+<?php echo Form::submit('Lihat Laporan',array('class'=>'btn btn-primary btn-sm')); ?>
+
+<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

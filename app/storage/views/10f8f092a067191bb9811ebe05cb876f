@@ -1,0 +1,17 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Showwing <?php echo $company->id; ?></2>
+<div class="jumbotron text-center">
+	<h3><?php echo $company->id; ?></h3>
+	<p>
+		<strong>Company Name :</strong><?php echo $company->company_name; ?><br>
+		<strong>Rekening Number :</strong><?php echo $company->rekening_number; ?>
+	</p>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

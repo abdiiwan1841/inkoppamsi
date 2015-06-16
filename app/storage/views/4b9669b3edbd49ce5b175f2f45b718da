@@ -1,0 +1,14 @@
+
+<?php $__env->startSection('navbar'); ?>
+
+@parent
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h3>Error 404, Page Not Found..!</h3>
+Click <a href="<?php echo URL::to('portal'); ?>">Here</a> to <a href="<?php echo URL::to('portal'); ?>">login.</a> 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.portal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

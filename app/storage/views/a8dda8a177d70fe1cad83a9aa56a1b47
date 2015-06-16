@@ -1,0 +1,25 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Edit <?php echo $grade->id; ?></h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::model($grade,array('route'=>array('grade.update',$grade->id),'method'=>'PUT')); ?>
+<div class="form-group">
+	<?php echo Form::label('id','Grade ID'); ?>
+	<?php echo Form::text('id',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('grade_name','Grade Name'); ?>
+	<?php echo Form::text('grade_name',null,array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Edit the Grade',array('class'=>'btn btn-primary')); ?>
+
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

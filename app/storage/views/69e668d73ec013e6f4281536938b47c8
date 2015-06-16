@@ -1,0 +1,36 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Edit the <?php echo $periode->id; ?></h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::model($periode,array('route'=>array('periode.update',$periode->id),'method'=>'PUT')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id','Periode ID'); ?>
+	<?php echo Form::text('id',null,array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tgl_awal','Tgl Awal'); ?>
+	<?php echo Form::text('tgl_awal',null,array('class'=>'form-control','placeholder'=>'YYYY-MM-DD')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tgl_akhir','Tgl Akhir'); ?>
+	<?php echo Form::text('tgl_akhir',null,array('class'=>'form-control','placeholder'=>'YYYY-MM-DD')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('tgl_efektif','Tgl Efektif'); ?>
+	<?php echo Form::text('tgl_efektif',null,array('class'=>'form-control','placeholder'=>'YYYY-MM-DD')); ?>
+</div>
+
+<?php echo Form::submit('Edit the Periode',array('class'=>'btn btn-primary')); ?>
+
+
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

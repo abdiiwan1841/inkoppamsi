@@ -1,0 +1,40 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Periode</h2>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info"><?php echo Session::get('mesager'); ?></div>
+<?php endif; ?>
+
+<table class="table table-bordere table-striped">
+<thead>
+	<tr>
+		<td>Periode ID</td>
+		<td>Tgl Awal</td>
+		<td>Tgl Akhir</td>
+		<td>Tgl Efektif</td>
+		<td>Action</td>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<tD><?php echo $value->id; ?></td>
+		<td><?php echo $value->tgl_awal; ?></td>
+		<td><?php echo $value->tgl_akhir; ?></td>
+		<td><?php echo $value->tgl_efektif; ?></td>
+		<td>
+			<?php echo Form::open(array('url'=>'periode','class'=>'pull-right')); ?>
+			<?php echo Form::hidden('_method','DELETE'); ?>
+			<?php echo Form::submit('Delete',array('class'=>'btn btn-warning')); ?>
+			<?php echo Form::close(); ?>
+		</td>
+	</tr>
+</tbody>
+</table>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

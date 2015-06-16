@@ -1,0 +1,23 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $iuran->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>ID Peserta : </strong><?php echo $iuran->id_peserta; ?><br>
+			<strong>Cicilan Ke- : </strong><?php echo $iuran->cicilan_ke; ?><br>
+			<strong>Iuran : </strong><?php echo number_format($iuran->iuran,2,'.',','); ?><br>
+			<strong>Tanggal Bayar : </strong><?php echo date('d M Y',strtotime($iuran->tanggal_bayar)); ?><br>
+			<strong>ID Bank : </strong><?php echo $iuran->id_bank; ?><br>
+			<strong>Status : </strong><?php echo $iuran->status; ?><br>
+			<strong>Keterangan : </strong><?php echo $iuran->keterangan; ?><br>
+			<strong>Created At : </strong><?php echo date('d M Y',strtotime($iuran->created_at)); ?><br>
+			<strong>Updated At : </strong><?php echo date('d M Y',strtotime($iuran->updated_at)); ?><br>
+			<br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('iuran'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,20 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $profil->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>ID Perusahaan : </strong><?php echo $profil->id; ?><br>
+			<strong>Nama Perusahaan : </strong><?php echo $profil->nama_perusahaan; ?><br>
+			<strong>Alamat : </strong><?php echo $profil->alamat; ?><br>
+			<strong>Telpon : </strong><?php echo $profil->telpon; ?><br>
+			<strong>Fax : </strong><?php echo $profil->fax; ?><br>
+			<strong>Email : </strong><?php echo $profil->email; ?><br>
+			<strong>Website : </strong><?php echo $profil->website; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('profil'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

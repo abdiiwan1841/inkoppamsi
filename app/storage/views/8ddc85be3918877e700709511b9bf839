@@ -1,0 +1,53 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Supplier</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+	</div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('supplier/create'); ?>">Create New</a><br><br>
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr><th>ID Supplier</th><th>Nama Supplier</th><th>Kota</th>
+	<th>Contact</th><th>Telp</th><th>Product</th><th>Email</th>
+	<th>Action</th></tr>
+</thead>
+<tbody>
+	<?php foreach($supplier as $key => $value): ?>
+		<tr>
+			<td><?php echo $value->id; ?></td>
+			<td><?php echo $value->nama_supplier; ?></td>
+			<td><?php echo $value->kota; ?></td>
+			<td><?php echo $value->contact; ?></td>
+			<td><?php echo $value->telp; ?></td>
+			<td><?php echo $value->Product; ?></td>
+			<td><?php echo $value->email; ?></td>
+			<td>
+				<?php echo Form::open(array('url'=>'supplier/'.$value->id,'class'=>'pull-right')); ?>
+				<?php echo Form::hidden('_method','DELETE'); ?>
+				<?php echo Form::submit('Delete',array('class'=>'btn btn-warning btn-sm')); ?>
+				<?php echo Form::close(); ?>
+				
+				<a class="btn btn-success btn-sm" href="<?php echo URL::to('supplier/'.$value->id); ?>">Show</a>
+				<a class="btn btn-info btn-sm" href="<?php echo URL::to('supplier/'.$value->id.'/edit'); ?>">Edit</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php echo $supplier->links(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.trading', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

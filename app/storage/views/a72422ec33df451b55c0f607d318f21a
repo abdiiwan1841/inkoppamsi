@@ -1,0 +1,43 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Posting</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+
+	</div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('posting/create'); ?>">Create New</a><br><br>
+
+<?php echo Datatable::table()
+	->addColumn('Tanggal','Debet','Kredit','Action')
+	->setOptions('aoColumnDefs',array(
+			array(
+				'bVisible' => 'ID' ,
+				'aTargets' => [0]),
+			array(
+				'bVisible' => 'Debet',
+				'aTargets' => [1]),
+			array(
+				'bVisible' => 'Kredit',
+				'aTargets' => [2]),
+			array(
+				'bSortable' => false,
+				'aTargets' => [3])
+			))
+	->setOptions('bProcessing',true)
+	->setUrl(route('posting.index'))
+	->render(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

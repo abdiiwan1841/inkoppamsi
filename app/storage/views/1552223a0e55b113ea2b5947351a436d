@@ -1,0 +1,29 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Create a Region</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'region/create')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id','Region ID'); ?>
+	<?php echo Form::text('id',Input::old('id'),array('class'=>'form-control input-sm')); ?>
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('region_name','Region Name'); ?>
+	<?php echo Form::text('region_name',Input::old('region_name'),array('class'=>'form-control input-sm')); ?>
+</div>
+
+<?php echo Form::submit('Create a Region',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<?php echo Form::reset('Cancel',array('class'=>'btn btn-danger btn-sm')); ?>
+
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

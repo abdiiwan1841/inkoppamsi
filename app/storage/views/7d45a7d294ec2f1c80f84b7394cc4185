@@ -1,0 +1,44 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h3>Nama PDAM : <?php echo $iuran->first()->peserta->pdam->nama_pdam; ?> <br>
+Bulan Tahun : <?php echo $iuran->first()->bln_thn; ?></h3>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('iurankolektif'); ?>">Back</a>
+				
+<br><br>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr><th>No.</th><th>ID Peserta</th><th>Peserta</th><th>Cicilan ke</th><th>Periode</th>
+	<th>Iuran</th><th>Status</th><th>Action</th></tr>
+</thead>
+<tbody>
+	<?php foreach($iuran as $key => $value): ?>
+		<tr>
+			<td><?php echo $no; ?></td>
+			<td><?php echo $value->id_peserta; ?></td>
+			<td><?php echo $value->peserta->nama_peserta; ?></td>
+			<td><?php echo $value->cicilan_ke; ?></td>
+			<td><?php echo $value->bln_thn; ?></td>
+			<td><?php echo number_format($value->iuran,2,'.',','); ?></td>
+			<td><?php echo $value->status; ?></td>
+			<td>
+				<?php echo Form::open(array('url'=>'iurankolektif/'.$value->id,'class'=>'pull-right')); ?>
+				<?php echo Form::hidden('_method','DELETE'); ?>
+				<?php echo Form::submit('Payment',array('class'=>'btn btn-success btn-sm')); ?>
+				<?php echo Form::close(); ?>
+			</td>
+		</tr>
+		<?php $no++; ?>
+	<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

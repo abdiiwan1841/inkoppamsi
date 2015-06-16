@@ -1,0 +1,48 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Create the Rekenings</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'setup')); ?>
+<div class="form-group">
+	<?php echo Form::label('id_rekening','ID Rekening'); ?>
+	<?php echo Form::text('id_rekening',Input::old('id_rekening'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('nama_rekening','Nama Rekening'); ?>
+	<?php echo Form::text('nama_rekening',Input::old('nama_rekening'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_klasifikasi','ID Klasifikasi'); ?>
+	<?php echo Form::select('id_klasifikasi',$klasifikasi,Input::old('id_klasifikasi'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('parent_id','Parent ID'); ?>
+	<?php echo Form::select('parent_id',$rekening,Input::old('parent_id'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('normal_balance','Normal Balance'); ?>
+	<?php echo Form::select('normal_balance',array('DEBET'=>'DEBET','KREDIT'=>'KREDIT'),Input::old('normal_balance'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_golongan','Golongan'); ?>
+	<?php echo Form::select('id_golongan',$golongan,Input::old('id_golongan'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('saldo_awal_debet','Saldo Awal Debet'); ?>
+	<?php echo Form::text('saldo_awal_debet',Input::old('saldo_awal_debet'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('saldo_awal_kredit','Saldo Awal Kredit'); ?>
+	<?php echo Form::text('saldo_awal_kredit',Input::old(''),array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Create the Rekening',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('setup'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

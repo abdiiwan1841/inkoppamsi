@@ -1,0 +1,17 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $data->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Tanggal Simpan : </strong><?php echo date('d M Y',strtotime($data->tanggal_simpan)); ?><br>
+			<strong>Id Anggota : </strong><?php echo $data->id_anggota; ?><br>
+			<strong>Id Jenis : </strong><?php echo $data->id_jenis; ?><br>
+			<strong>Jumlah : </strong><?php echo number_format($data->jumlah,2,',','.'); ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('simpanan'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

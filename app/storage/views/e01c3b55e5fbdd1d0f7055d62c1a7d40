@@ -1,0 +1,16 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $data->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>tanggal_ambil : </strong><?php echo date('d M Y',strtotime($data->tanggal_ambil)); ?><br>
+			<strong>id_anggota : </strong><?php echo $data->id_anggota; ?><br>
+			<strong>jumlah : </strong><?php echo number_format($data->jumlah,2,',','.'); ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('pengambilan'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

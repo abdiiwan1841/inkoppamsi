@@ -1,0 +1,40 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Region</h2>
+
+<?php if (Session::has('message')): ?>
+	<div class="alert alert-info"><?php echo Session::get('message'); ?></div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('region/create'); ?>">Create a Region</a><bR><Br>
+
+<table class="table table-bordered table-hover table-stripped">
+<thead>
+	<tr><td>Region ID</td><td>Region Name</td><td>Action</td></tr>
+</thead>
+<tbody>
+<?php foreach($region as $key => $value): ?>
+	<tr>
+		<td><?php echo $value->id; ?></td>
+		<td><?php echo $value->region_name; ?></td>
+		<tD>
+			<?php echo Form::open(array('url'=>'divisi/'.$value->id,'class'=>'pull-right')); ?>
+			<?php echo Form::hidden('_method','DELETE'); ?>
+			<?php echo Form::submit('Delete',array('class'=>'btn btn-warning btn-sm')); ?>
+			<?php echo Form::close(); ?>
+			
+			<a class="btn btn-success btn-sm" href="<?php echo URL::to('region/'.$value->id); ?>">Show</a>
+			<a class="btn btn-info btn-sm" href="<?php echo URL::to('region/'.$value->id.'/edit'); ?>">Edit</a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+</tbody>
+
+</table>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

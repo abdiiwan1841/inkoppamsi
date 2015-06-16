@@ -1,0 +1,73 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>Order #<?php echo $penjualan->id; ?></h2>
+
+<table >
+<tr><td>Tgl Penjualan</td><td>:</td><td><?php echo date('d M Y',strtotime($penjualan->tanggal_penjualan)); ?></td></tr>
+<tr><td>ID Pelanggan</td><td>:</td><td><?php echo $penjualan->pelanggan()->first()->nama_pelanggan; ?></td></tr>
+<tr><td>ID Ekspedisi</td><td>:</td><td><?php echo $penjualan->ekspedisi()->first()->nama; ?></td></tr>
+</table><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+	</div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('penjualandetail/'.$penjualan->id); ?>">Create New</a>
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('penjualan'); ?>">Penjualan</a><br><br>
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr><th>ID Barang</th><th>Qty</th><th>Satuan</th><th>Harga</th>
+	<th>Jumlah</th><th>Action</th></tr>
+</thead>
+<tbody>
+	<?php foreach($data as $key => $value): ?>
+		<tr>
+			<td><?php echo $value->id_barang; ?></td>
+			<td><?php echo number_format($value->qty,2,',','.'); ?></td>
+			<td><?php echo $value->satuan; ?></td>
+			<td><?php echo number_format($value->harga,2,',','.'); ?></td>
+			<td><?php echo number_format($value->jumlah,2,',','.'); ?></td>
+			<td>
+				<?php echo Form::open(array('url'=>'penjualandetail/'.$value->id,'class'=>'pull-right')); ?>
+				<?php echo Form::hidden('_method','DELETE'); ?>
+				<?php echo Form::submit('Delete',array('class'=>'btn btn-warning btn-sm')); ?>
+				<?php echo Form::close(); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	    <tr>
+			<td colspan="4">Jumlah</td>
+			<td><?php echo number_format($penjualan->jumlah,2,',','.'); ?></td><td></td>
+		</tr>
+		<tr>
+			<td colspan="4">Diskon ( % )</td>
+			<td><?php echo number_format($penjualan->diskon,2,',','.'); ?></td><td></td>
+		</tr>
+		<tr>
+			<td colspan="4">PPN ( % )</td>
+			<td><?php echo number_format($penjualan->ppn,2,',','.'); ?></td><td></td>
+		</tr>
+		<tr>
+			<td colspan="4">Ongkos Kirim</td>
+			<td><?php echo number_format($penjualan->ongkos_kirim,2,',','.'); ?></td><td></td>
+		</tr>
+		<tr>
+			<td colspan="4">Total</td>
+			<td><?php echo number_format($penjualan->total,2,',','.'); ?></td><td></td>
+		</tr>
+</tbody>	
+</table>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.trading', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,15 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $account->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Account ID : </strong><?php echo $account->id; ?><br>
+			<strong>Account Name : </strong><?php echo $account->account_name; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('account'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

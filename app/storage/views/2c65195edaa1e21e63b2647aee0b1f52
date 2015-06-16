@@ -1,0 +1,58 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Posting</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+	</div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('posting/create'); ?>">Create New</a><br><br>
+
+<?php echo Form::open(array('url'=>'cari_posting')); ?>
+	<div class="form-group">
+		<?php echo Form::label('tanggal','Masukan Tanggal Posting'); ?>
+		<?php echo Form::text('tanggal',Input::old('tanggal'),array('class'=>'form-control','placeholder'=>'DD-MM-YYYY')); ?>
+	</div>
+	<div class="form-group">
+		<?php echo Form::submit('Find Posting',array('class' => 'btn btn-primary')); ?>
+	</div>
+<?php echo Form::close(); ?>
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr>
+		<th>Tanggal</th>
+		<th>Debet</th>
+		<th>Kredit</th>
+		<th>Action</th>
+	</tr>
+</thead>
+<tbody>
+	<?php foreach($data as $key => $value): ?>
+		<tr>
+			<td><?php echo date('d M Y',strtotime($value->id)); ?></td>
+			<td align="right"><?php echo number_format($value->debet,2,',','.'); ?></td>
+			<td align="right"><?php echo number_format($value->kredit,2,',','.'); ?></td>
+			<td>
+				<a class="btn btn-success btn-sm" href="<?php echo URL::to('posting/'.$value->id); ?>">Detail</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php if(Input::get('tanggal')==""){ ?>
+<?php echo $data->links(); ?>
+<?php } ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

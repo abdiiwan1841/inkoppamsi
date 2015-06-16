@@ -1,0 +1,39 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="col-md-4">
+
+<h2>Edit the Status</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Form::model($status,array('route'=>array('status.update',$status->id_status),'method'=>'PUT')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('id_status','ID Status'); ?>
+
+	<?php echo Form::text('id_status',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('keterangan','Keterangan'); ?>
+
+	<?php echo Form::text('keterangan',null,array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('tarif','Tarif'); ?>
+
+	<?php echo Form::text('tarif',null,array('class'=>'form-control')); ?>
+
+</div>
+<?php echo Form::submit('Update the Status',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('status'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.adminlte', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

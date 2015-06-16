@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="bg-black">
+    <head>
+            <title>SK-Project</title>
+			<link rel="stylesheet" href="<?php echo asset('/assets//css/bootstrap.min.css'); ?>">
+			<link rel="stylesheet" href="<?php echo asset('/assets//css/bootstrap-theme.min.css'); ?>">
+			<?php echo HTML::script("assets/js/bootstrap.min.js"); ?>
+			<?php echo HTML::script("assets/jquery.js"); ?>
+    </head>
+    <body class="bg-black">
+		
+		<div class="container">
+			<div class="form-box" id="login-box">
+				<?php echo $__env->yieldContent('content'); ?>
+			</div>
+		</div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+
+    </body>
+</html>

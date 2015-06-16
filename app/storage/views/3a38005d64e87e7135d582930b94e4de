@@ -1,0 +1,23 @@
+<?php $__env->startSection('content'); ?>
+<div class="container">
+	<h2>Register</h2>
+	<?php if(Session::has('pesan')): ?>
+		<div class="alert alert-success"><?php echo Session::get('pesan'); ?></div>
+	<?php endif; ?>
+	
+	<?php echo Form::open(array('action'=>'UserController@store')); ?>
+	<?php echo Form::label('firstname','First Name :'); ?>
+	<?php echo Form::text('firstname','',array('class'=>'form-control')); ?>
+	<?php echo Form::label('lastname','Last Name :'); ?>
+	<?php echo Form::text('lastname','',array('class'=>'form-control')); ?>
+	<?php echo Form::label('email','Email'); ?>
+	<?php echo Form::text('email','',array('class'=>'form-control')); ?>
+	<?php echo Form::label('password','Password'); ?>
+	<?php echo Form::password('password',array('class'=>'form-control')); ?>
+	<br>
+	<?php echo Form::submit('Registerin dong',array('class'=>'btn btn-primary')); ?>
+	<?php echo Form::close(); ?>
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

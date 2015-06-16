@@ -1,0 +1,43 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Golongan</h2>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info"><?php echo Session::get('message'); ?></div>
+<?php endif; ?>
+
+<a class="btn btn-primary" href="<?php echo URL::to('golongan/create'); ?>">Create A Golongan</a><br><br>
+
+<table class="table table-bordered table-striped">
+<thead>
+	<tr>
+		<td>Golongan ID</td>
+		<td>Gaji Pokok</td>
+		<td>Action</td>
+	</tr>
+</thead>
+<tbody>
+<?php foreach($golongan as $key => $value): ?>
+	<tr>
+		<td><?php echo $value->id; ?></td>
+		<td><?php echo number_format($value->gaji_pokok,2,',','.'); ?> </td>
+		<td>
+			<?php echo Form::open(array('url'=>'golongan/'.$value->id,'class'=>'pull-right')); ?>
+			<?php echo Form::hidden('_method','DELETE'); ?>
+			<?php echo Form::submit('Delete',array('class'=>'btn btn-warning')); ?>
+			<?php echo Form::close(); ?>
+			
+			<a class="btn btn-success" href="<?php echo URL::to('golongan/'.$value->id); ?>">Show</a>
+			<a class="btn btn-info" href="<?php echo URL::to('golongan/'.$value->id.'/edit'); ?>">Edit</a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,32 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Create the Barang</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'barang')); ?>
+<div class="form-group">
+	<?php echo Form::label('id','ID Barang'); ?>
+	<?php echo Form::text('id',Input::old('id'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('nama_barang','Nama Barang'); ?>
+	<?php echo Form::text('nama_barang',Input::old('nama_barang'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('satuan','Satuan'); ?>
+	<?php echo Form::text('satuan',Input::old('satuan'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('stok','Stok'); ?>
+	<?php echo Form::text('stok',Input::old('stok'),array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Create the Barang',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('barang'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.trading', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

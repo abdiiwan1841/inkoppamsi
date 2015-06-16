@@ -1,0 +1,24 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $data->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Nama Koperasi : </strong><?php echo $data->nama_koperasi; ?><br>
+			<strong>Alamat : </strong><?php echo $data->alamat; ?><br>
+			<strong>Telp : </strong><?php echo $data->telp; ?><br>
+			<strong>Fax : </strong><?php echo $data->fax; ?><br>
+			<strong>Pengurus 1 : </strong><?php echo $data->pengurus1; ?><br>
+			<strong>Pengurus 2 : </strong><?php echo $data->pengurus2; ?><br>
+			<strong>Pengurus 3 : </strong><?php echo $data->pengurus3; ?><br>
+			<strong>Pengawas : </strong><?php echo $data->pengawas; ?><br>
+			<strong>Email : </strong><?php echo $data->email; ?><br>
+			<strong>Simpanan Pokok : </strong><?php echo number_format($data->simpanan_pokok,2,',','.'); ?><br>
+			<strong>Simpanan Wajib : </strong><?php echo number_format($data->simpanan_wajib,2,',','.'); ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('anggota'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

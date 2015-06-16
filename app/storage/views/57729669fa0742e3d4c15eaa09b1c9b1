@@ -1,0 +1,21 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h2>Showing <?php echo $data->id; ?></h2>
+	<div class="jumbotron text-center">
+		<p>
+			<strong>Nama Anggota : </strong><?php echo $data->nama_anggota; ?><br>
+			<strong>Jenis Kelamin : </strong><?php echo $data->jk; ?><br>
+			<strong>Tempat Lahir : </strong><?php echo $data->tempat_lahir; ?><br>
+			<strong>Tanggal Lahir : </strong><?php echo date('d M Y',strtotime($data->tanggal_lahir)); ?><br>
+			<strong>Alamat : </strong><?php echo $data->alamat; ?><br>
+			<strong>HP : </strong><?php echo $data->hp; ?><br>
+			<strong>Identitas : </strong><?php echo $data->no_identitas; ?><br>
+			<strong>ID PDAM : </strong><?php echo $data->id_pdam; ?><br><br>
+			<a class="btn btn-primary btn-sm" href="<?php echo URL::to('anggota'); ?>">Go Back</a>
+		</p>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

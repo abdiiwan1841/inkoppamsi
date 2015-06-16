@@ -1,0 +1,36 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h2>Create the Pelanggan</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+<?php echo Form::open(array('url'=>'pelanggan')); ?>
+<div class="form-group">
+	<?php echo Form::label('nama_pelanggan','Nama Pelanggan'); ?>
+	<?php echo Form::text('nama_pelanggan',Input::old('nama_pelanggan'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('alamat','Alamat'); ?>
+	<?php echo Form::text('alamat',Input::old('alamat'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('contact','Contact'); ?>
+	<?php echo Form::text('contact',Input::old('contact'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('telp','Telpon'); ?>
+	<?php echo Form::text('telp',Input::old('telp'),array('class'=>'form-control')); ?>
+</div>
+<div class="form-group">
+	<?php echo Form::label('fax','Fax'); ?>
+	<?php echo Form::text('fax',Input::old('fax'),array('class'=>'form-control')); ?>
+</div>
+<?php echo Form::submit('Create the Pelanggan',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('pelanggan'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.trading', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

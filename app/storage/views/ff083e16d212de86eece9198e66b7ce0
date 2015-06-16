@@ -1,0 +1,56 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="col-md-4">
+<h2>Create the Jurnal Umum</h2>
+
+<?php echo HTML::ul($errors->all()); ?>
+
+
+<?php echo Form::open(array('url'=>'jurnalumum')); ?>
+
+<div class="form-group">
+	<?php echo Form::label('no_bukti','Nomor Bukti'); ?>
+
+	<?php echo Form::text('no_bukti',Input::old('no_bukti'),array('class'=>'form-control','disabled')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('tanggal','Tanggal'); ?>
+
+	<?php echo Form::text('tanggal',Input::old('tanggal'),array('class'=>'form-control','placeholder'=>'DD-MM-YYYY')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('keterangan','Keterangan'); ?>
+
+	<?php echo Form::textarea('keterangan',Input::old('keterangan'),array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('jumlah','Jumlah'); ?>
+
+	<?php echo Form::text('jumlah',Input::old('jumlah'),array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_rekening','Rekening'); ?>
+
+	<?php echo Form::select('id_rekening',$rekening,Input::old('id_rekening'),array('class'=>'form-control')); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('id_posisi','Posisi'); ?>
+
+	<?php echo Form::select('id_posisi',$posisi,Input::old('id_posisi'),array('class'=>'form-control')); ?>
+
+</div>
+<?php echo Form::submit('Create the Journal',array('class'=>'btn btn-primary btn-sm')); ?>&nbsp
+<a class="btn btn-danger btn-sm" href="<?php echo URL::to('jurnalumum'); ?>">Cancel</a>
+<?php echo Form::close(); ?>
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

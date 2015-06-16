@@ -1,0 +1,62 @@
+<?php $__env->startSection('navbar'); ?>
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h2>View All Jurnal Umum</h2><br>
+
+<?php if(Session::has('message')): ?>
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-info"></i>
+		<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		<b>Alert!</b>
+		<?php echo Session::get('message'); ?>
+	</div>
+<?php endif; ?>
+
+<a class="btn btn-primary btn-sm" href="<?php echo URL::to('jurnalumum/create'); ?>">Create New</a><br><br>
+
+<?php echo Form::open(array('url'=>'cari_jurnalumum')); ?>
+	<div class="form-group">
+		<?php echo Form::label('keterangan','Masukan Keterangan'); ?>
+		<?php echo Form::text('keterangan',Input::old('keterangan'),array('class'=>'form-control')); ?>
+	</div>
+	<div class="form-group">
+		<?php echo Form::submit('Find Jurnal',array('class' => 'btn btn-primary')); ?>
+	</div>
+<?php echo Form::close(); ?>
+
+<table class="table table-stripped table-bordered table-hover">
+<thead>
+	<tr><th>No Bukti</th><th>Tanggal</th><th>Keterangan</th><th>Total Debet</th>
+	<th>Total Kredit</th><th>Action</th></tr>
+</thead>
+<tbody>
+	<?php foreach($jurnal as $key => $value): ?>
+		<tr>
+			<td><?php echo $value->no_bukti; ?></td>
+			<td><?php echo date('d M Y',strtotime($value->tanggal)); ?></td>
+			<td><?php echo $value->keterangan; ?></td>
+			<td align="right"><?php echo number_format($value->debet,2,',','.'); ?></td>
+			<td align="right"><?php echo number_format($value->kredit,2,',','.'); ?></td>
+			<td>
+				<?php echo Form::open(array('url'=>'jurnalumum/'.$value->no_bukti,'class'=>'pull-right')); ?>
+				<?php echo Form::hidden('_method','DELETE'); ?>
+				<?php echo Form::submit('Delete',array('class'=>'btn btn-warning btn-sm')); ?>
+				<?php echo Form::close(); ?>
+				
+				<a class="btn btn-success btn-sm" href="<?php echo URL::to('jurnalumum/'.$value->no_bukti); ?>">Show</a>
+				<a class="btn btn-info btn-sm" href="<?php echo URL::to('jurnalumum/'.$value->no_bukti.'/edit'); ?>">Edit</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php if(Input::get('keterangan')==""){ ?>
+<?php echo $jurnal->links(); ?>
+<?php } ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.accounting', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
